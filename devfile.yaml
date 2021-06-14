@@ -4,7 +4,7 @@ metadata:
   version: 1.0.1
   displayName: Node.js Runtime
   description: Stack with Node.js 14
-  tags: ["Node.js", "Express", "ubi8"]
+  tags: ["NodeJS", "Express", "ubi8"]
   projectType: "nodejs"
   language: "nodejs"
   attributes:
