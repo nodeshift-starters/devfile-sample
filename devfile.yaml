@@ -18,8 +18,8 @@ components:
       image: buildguidanceimage-placeholder
       memoryLimit: 1024Mi
       endpoints:
-        - name: http-3000
-          targetPort: 3000
+        - name: http-3001
+          targetPort: 3001
   - name: runtime
     container:
       image: registry.access.redhat.com/ubi8/nodejs-14:latest
