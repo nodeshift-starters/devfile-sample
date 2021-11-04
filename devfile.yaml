@@ -1,4 +1,4 @@
-schemaVersion: 2.0.0
+schemaVersion: 2.2.0
 metadata:
   name: nodejs
   version: 1.0.1
@@ -8,18 +8,20 @@ metadata:
   projectType: "nodejs"
   language: "nodejs"
   attributes:
-    alpha.build-context: .
-    alpha.build-dockerfile: Dockerfile
+    alpha.dockerimage-port: 3001
+  provider: Red Hat
+  supportUrl: https://github.com/devfile-samples/devfile-support#support-information
 components:
-  - name: buildguidance
-    attributes:
-      tool: console-import
-    container:
-      image: buildguidanceimage-placeholder
-      memoryLimit: 1024Mi
-      endpoints:
-        - name: http-3001
-          targetPort: 3001
+  - name: outerloop-build
+    image:
+      imageName: nodejs-image:latest
+      dockerfile:
+        uri: Dockerfile
+        buildContext: .
+        rootRequired: false
+  - name: outerloop-deploy
+    kubernetes:
+      uri: outerloop-deploy.yaml
   - name: runtime
     container:
       image: registry.access.redhat.com/ubi8/nodejs-14:latest
