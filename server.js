@@ -51,7 +51,7 @@ app.use(require('pino-http')({logger: pino}));
 
 app.get('/', (req, res) => {
   // Use req.log (a `pino` instance) to log JSON:
-  req.log.info({message: 'Hello from Node.js Starter Application!'});
+  req.log.info({message: 'Welcome to the Openshift Introduction course!'});
   res.send('Hello from Node.js Starter Application!');
 });
 
