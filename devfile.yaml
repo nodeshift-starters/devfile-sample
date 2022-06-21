@@ -23,6 +23,14 @@ components:
         buildContext: .
         rootRequired: false
   - name: outerloop-deploy
+    attributes:
+      deployment/replicas: 1
+      deployment/route: route1
+      deployment/cpuLimit: "100m"
+      deployment/cpuRequest: 10m
+      deployment/memoryLimit: 100Mi
+      deployment/memoryRequest: 10Mi
+      deployment/container-port: 3001
     kubernetes:
       uri: outerloop-deploy.yaml
 commands:
