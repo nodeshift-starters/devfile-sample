@@ -3,7 +3,7 @@ metadata:
   name: nodejs
   version: 2.0.0
   displayName: Node.js Runtime
-  description: Stack with Node.js 14
+  description: Stack with Node.js 16
   tags: ["NodeJS", "Express", "ubi8"]
   projectType: "nodejs"
   language: "nodejs"
