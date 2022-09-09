@@ -35,9 +35,10 @@ const PRODUCTION = app.get('env') === 'production';
 // overhead is included in timing.
 app.get('/ready', (req, res) => res.status(200).json({status:"ok"}));
 app.get('/live', (req, res) => res.status(200).json({status:"ok"}));
-app.get('/metrics', (req, res, next) => {
+app.get('/metrics', async (req, res, next) => {
+  const metrics = await Prometheus.register.metrics();
   res.set('Content-Type', Prometheus.register.contentType)
-  res.end(Prometheus.register.metrics())
+  res.end(metrics);
 })
 
 // Time routes after here.
