@@ -6,7 +6,7 @@ This is a sample starter project that provides you with a basic Express app and 
 
 Health-checking enables the cloud platform to determine the `readiness` and `liveness` of your application.
 
- These endpoints will be available for you to use:
+These endpoints will be available for you to use:
 
 - Readiness endpoint: http://localhost:3000/ready
 - Liveness endpoint: http://localhost:3000/live
@@ -15,9 +15,13 @@ Health-checking enables the cloud platform to determine the `readiness` and `liv
 
 The [prom-client](https://www.npmjs.com/package/prom-client) module will collect a wide range of resource-centric (CPU, memory) and application-centric (HTTP request responsiveness) metrics from your application, and then expose them as multi-dimensional time-series data through an application endpoint for Prometheus to scrape and aggregate.
 
- This endpoints will be available for you to use:
+This endpoint will be available for you to use:
 
 - Metrics endpoint: http://localhost:3000/metrics
+
+## Dockerfile
+
+For constructing node_modules in the first build stage of Dockerfile, we use `npm ci` to avoid file permissions error. For npm versions greater than 6, `npm install` opens `package-lock.json` in write mode, which is restricted to read mode by ubi images and as a result, node_modules construction ends up with a file permissions error.
 
 ## License
 
