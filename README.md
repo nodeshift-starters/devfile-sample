@@ -8,7 +8,7 @@ Health-checking enables the cloud platform to determine the `readiness` and `liv
 
 These endpoints will be available for you to use:
 
-- Readiness endpoint: http://localhost:3000/ready
+- Readiness endpoint: http://localhost:3000/readyq
 - Liveness endpoint: http://localhost:3000/live
 
 ## Application metrics
