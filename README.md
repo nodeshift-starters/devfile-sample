@@ -15,7 +15,7 @@ These endpoints will be available for you to use:
 
 The [prom-client](https://www.npmjs.com/package/prom-client) module will collect a wide range of resource-centric (CPU, memory) and application-centric (HTTP request responsiveness) metrics from your application, and then expose them as multi-dimensional time-series data through an application endpoint for Prometheus to scrape and aggregate.
 
-This endpoint will be available for you to use:
+This endpoint will be available for you to use:zxv
 
 - Metrics endpoint: http://localhost:3000/metrics
 
