@@ -4,7 +4,7 @@ This is a sample starter project that provides you with a basic Express app and 
 
 ## Health checking
 
-Health-checking enables the cloud platform to determine the `readiness` and `liveness` of your application.
+Health-checking enables the cloud platform to determine the `readiness` and `liveness` of your application. asfd
 
 These endpoints will be available for you to use:
 
