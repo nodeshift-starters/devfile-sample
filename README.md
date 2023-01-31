@@ -6,7 +6,7 @@ This is a sample starter project that provides you with a basic Express app and 
 
 Health-checking enables the cloud platform to determine the `readiness` and `liveness` of your application.
 
-These endpoints will be available for you to use:
+These endpoints will be available for you to use: d
 
 - Readiness endpoint: http://localhost:3000/readyq
 - Liveness endpoint: http://localhost:3000/live
