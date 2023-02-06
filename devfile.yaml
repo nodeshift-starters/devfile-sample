@@ -1,7 +1,7 @@
 schemaVersion: 2.2.0
 metadata:
   name: nodejs
-  version: 2.0.0
+  version: 2.1.0
   displayName: Node.js Runtime
   description: Stack with Node.js 16
   tags: ["NodeJS", "Express", "ubi8"]
@@ -15,14 +15,14 @@ parent:
   id: nodejs
   registryUrl: "https://registry.devfile.io"
 components:
-  - name: outerloop-build
+  - name: image-build
     image:
       imageName: nodejs-image:latest
       dockerfile:
         uri: Dockerfile
         buildContext: .
         rootRequired: false
-  - name: outerloop-deploy
+  - name: kubernetes-deploy
     attributes:
       deployment/replicas: 1
       deployment/cpuLimit: "100m"
@@ -31,14 +31,18 @@ components:
       deployment/memoryRequest: 50Mi
       deployment/container-port: 3001
     kubernetes:
-      uri: outerloop-deploy.yaml
+      uri: deploy.yaml
+      endpoints:
+      - name: http-3001
+        targetPort: 3001
+        path: /
 commands:
   - id: build-image
     apply:
-      component: outerloop-build
+      component: image-build
   - id: deployk8s
     apply:
-      component: outerloop-deploy
+      component: kubernetes-deploy
   - id: deploy
     composite:
       commands:
