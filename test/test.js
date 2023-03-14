@@ -1,21 +1,38 @@
-var assert = require('assert');
+import React, { Component } from 'react';
 
-(function(){
-    'use strict';
+class UserProfile extends Component {
+  state = {
+    name: 'John Doe',
+    age: 25,
+    bio: 'I am a software engineer from California.'
+  }
 
-    equal('should pass', function() {
-        assert(1 === 1);
-      });
+  handleChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  }
 
-    function equal(desc, fn) {
-      try {
-        fn();
-        console.log('\x1b[32m%s\x1b[0m', '\u2714 ' + desc);
-        console.log("Add your tests in this ./test directory");
-      } catch (error) {
-        console.log('\n');
-        console.log('\x1b[31m%s\x1b[0m', '\u2718 ' + desc);
-        console.error(error);
-      }
-    }
-  })();
+  render() {
+    const { name, age, bio } = this.state;
+
+    return (
+      <div>
+        <h1>Profile</h1>
+        <form>
+          <label htmlFor="name">Name</label>
+          <input type="text" id="name" name="name" value={name} onChange={this.handleChange} />
+
+          <label htmlFor="age">Age</label>
+          <input type="number" id="age" name="age" value={age} onChange={this.handleChange} />
+
+          <label htmlFor="bio">Bio</label>
+          <textarea id="bio" name="bio" value={bio} onChange={this.handleChange}></textarea>
+
+          <button type="submit">Save Changes</button>
+        </form>
+      </div>
+    );
+  }
+}
+
+export default UserProfile;
