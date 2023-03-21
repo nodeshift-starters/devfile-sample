@@ -7,8 +7,7 @@ COPY package.json package-lock.json* ./
 # Install app dependencies
 RUN \
   if [ -f package-lock.json ]; then npm ci; \
-  elif [ -f package.json ]; then npm install; \
-  else echo "package.json not found." && exit 1; \
+  else npm install; \
   fi
 
 # Copy the dependencies into a Slim Node docker image
