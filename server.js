@@ -1,29 +1,5 @@
-const Prometheus = require('prom-client')
 const express = require('express');
 const http = require('http');
-
-Prometheus.collectDefaultMetrics();
-
-const requestHistogram = new Prometheus.Histogram({
-    name: 'http_request_duration_seconds',
-    help: 'Duration of HTTP requests in seconds',
-    labelNames: ['code', 'handler', 'method'],
-    buckets: [0.005, 0.01, 0.025, 0.05, 0.1, 0.25, 0.5, 1, 2.5, 5]
-})
-
-const requestTimer = (req, res, next) => {
-  const path = new URL(req.url, `http://${req.hostname}`).pathname
-  const stop = requestHistogram.startTimer({
-    method: req.method,
-    handler: path
-  })
-  res.on('finish', () => {
-    stop({
-      code: res.statusCode
-    })
-  })
-  next()
-}
 
 const app = express();
 const server = http.createServer(app)
@@ -41,18 +17,8 @@ app.get('/metrics', async (req, res, next) => {
   res.end(metrics);
 })
 
-// Time routes after here.
-app.use(requestTimer);
-
-// Log routes after here.
-const pino = require('pino')({
-  level: PRODUCTION ? 'info' : 'debug',
-});
-app.use(require('pino-http')({logger: pino}));
 
 app.get('/', (req, res) => {
-  // Use req.log (a `pino` instance) to log JSON:
-  req.log.info({message: 'Hello from Node.js Starter Application!'});
   res.send('Hello from Node.js Starter Application!');
 });
 
