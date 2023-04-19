@@ -27,7 +27,6 @@ app.get('*', (req, res) => {
 });
 
 // Listen and serve.
-const PORT = 5005;
 server.listen(PORT, () => {
   console.log(`App started on PORT ${PORT}`);
 });
