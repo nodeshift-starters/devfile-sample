@@ -22,7 +22,7 @@ spec:
           resources:
             requests:
               memory: "50Mi"
-              cpu: "10m"
+              cpu: "100m"
 ---
 kind: Service
 apiVersion: v1
