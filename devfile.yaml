@@ -31,9 +31,10 @@ components:
     kubernetes:
       uri: deploy.yaml
       endpoints:
-      - name: http-3001
-        targetPort: 3001
-        path: /
+        - name: http-3001
+          targetPort: 3001
+          path: /
+          secure: true
 commands:
   - id: build-image
     apply:
