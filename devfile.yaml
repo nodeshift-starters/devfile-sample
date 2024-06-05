@@ -1,4 +1,4 @@
-schemaVersion: 2.2.2
+schemaVersion: 2.2.0
 metadata:
   name: nodejs
   version: 3.0.0
@@ -13,6 +13,7 @@ metadata:
   supportUrl: https://github.com/devfile-samples/devfile-support#support-information
 parent:
   id: nodejs
+  version: 2.2.0
   registryUrl: "https://registry.devfile.io"
 components:
   - name: image-build
