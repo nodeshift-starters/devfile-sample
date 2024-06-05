@@ -13,6 +13,7 @@ metadata:
   supportUrl: https://github.com/devfile-samples/devfile-support#support-information
 parent:
   id: nodejs
+  version: 2.2.0
   registryUrl: "https://registry.devfile.io"
 components:
   - name: image-build
